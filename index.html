@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <title>Document</title>
+</head>
+<body>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-10 offset-1 offset-md-3 col-md-6">
+          <form action="" id="formTransform">
+            <div class="form-group d-flex">
+              <input autocomplete="off" id="changeInputText" type="text" placeholder="Escribir texto" class="form-control mr-3" name="textTransform">
+              <button type="submit" class=" btn btn-primary">transformar</button>
+
+            </div>
+          </form>
+        </div>
+        <div class="col-12 col-md-6 p-3" style="background-color: rgb(240, 223, 255);">
+          <p id="innerTextStart" class="m-0"></p>
+        </div>
+        <div class="col-12 col-md-6 p-3" style="background-color: rgb(235, 248, 255);">
+          <p id="innerTextEnd" class="m-0"></p>
+        </div>
+
+      </div>
+    </div>
+  </div>  
+
+  <script>
+    const formTransform = document.querySelector(`#formTransform`)
+    const innerTextStart =  document.querySelector(`#innerTextStart`)
+    const innerTextEnd =  document.querySelector(`#innerTextEnd`)
+    formTransform.addEventListener(`submit`, e => {
+      e.preventDefault()
+      
+      innerTextEnd.textContent = ``
+      const input = e.target.textTransform
+      
+      let textTransform = ``
+      
+      innerTextStart.textContent =  input.value
+      // console.log(input.value.length)
+
+      for(let i = input.value.length - 1 ; i >= 0 ; i--){
+        innerTextEnd.textContent += input.value[i] 
+      }
+      e.target.reset()
+    })
+  </script>
+  
+</body>
+</html>
